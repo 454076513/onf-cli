@@ -37,6 +37,6 @@ jobs:
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "${{matrix.onf-version}}"
-        prerelease: true
+        prerelease: false
         files: |
           ./build/*
