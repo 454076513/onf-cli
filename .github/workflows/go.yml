@@ -27,16 +27,16 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build
-      run: go build -o build/onf-${{ matrix.go-version }}-#{{matrix.onf-version}} ./cmd
+      run: go build -o build/onf-${{ matrix.os }}-${{matrix.onf-version}} ./cmd
 
     - name: test
-      run: ./build/onf-${{ matrix.go-version }}-#{{matrix.onf-version}} -h
+      run: ./build/onf-${{ matrix.os }}-${{matrix.onf-version}} -h
     
     - name: upload
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
+        automatic_release_tag: "${{matrix.onf-version}}"
         prerelease: true
         files: |
           ./build/*
