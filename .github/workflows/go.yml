@@ -29,9 +29,9 @@ jobs:
 
     - name: read version
       uses: pCYSl5EDgo/cat@master
-        id: onf-version
-        with:
-          path: VERSION
+      id: onf-version
+      with:
+        path: VERSION
 
     # - name: build
     #   run: go build -o build/onf-${{ matrix.os }}-${{matrix.onf-version}} ./cmd
