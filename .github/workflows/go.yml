@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         go-version: [1.15.x]
-        os: [ubuntu, macos, windows]
+        os: [macos]
         onf-version: [v0.1.0]
     runs-on:  ${{ matrix.os }}-latest
     steps:
@@ -26,11 +26,18 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
 
-    - name: build
-      run: go build -o build/onf-${{ matrix.os }}-${{matrix.onf-version}} ./cmd
+    # - name: build
+    #   run: go build -o build/onf-${{ matrix.os }}-${{matrix.onf-version}} ./cmd
 
-    - name: test
-      run: ./build/onf-${{ matrix.os }}-${{matrix.onf-version}} -h
+    - name: build linux
+      run: sh ./scripts/build/linux.sh
+    - name: build macos
+      run: sh ./scripts/build/osx.sh
+    - name: build window
+      run: sh ./scripts/build/windows.sh
+
+    # - name: test
+    #   run: ./build/onf-${{ matrix.os }}-${{matrix.onf-version}} -h
     
     - name: upload:${{ matrix.os }}-${{matrix.onf-version}}
       uses: "marvinpinto/action-automatic-releases@latest"
