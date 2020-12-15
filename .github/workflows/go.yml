@@ -50,7 +50,7 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: v"${{ steps.onf-version.outputs.text }}"
+        automatic_release_tag: v${{ steps.onf-version.outputs.text }}
         prerelease: false
         files: |
           ./build/*
