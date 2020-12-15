@@ -14,7 +14,7 @@ jobs:
       matrix:
         go-version: [1.15.x]
         #[macos,ubuntu, windows]
-        os: [windows]
+        os: [ubuntu]
         onf-version: [v0.1.0]
     runs-on:  ${{ matrix.os }}-latest
     steps:
@@ -27,6 +27,10 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
 
+    - name: version
+      env: 
+        VERSION: $(cat VERSION)
+
     # - name: build
     #   run: go build -o build/onf-${{ matrix.os }}-${{matrix.onf-version}} ./cmd
 
@@ -37,6 +41,9 @@ jobs:
     - name: build window
       run: sh ./scripts/build/windows.sh
 
+    - name: chmod +x
+      run: chmod +x ./build/*
+
     # - name: test
     #   run: ./build/onf-${{ matrix.os }}-${{matrix.onf-version}} -h
     
@@ -44,7 +51,7 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "${{matrix.onf-version}}"
+        automatic_release_tag: "${{VERSION}}"
         prerelease: false
         files: |
           ./build/*
