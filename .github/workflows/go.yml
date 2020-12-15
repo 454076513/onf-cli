@@ -27,9 +27,10 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
 
-    - name: version
-      env: 
-        VERSION: $(cat VERSION)
+    - uses: pCYSl5EDgo/cat@master
+        id: version
+        with:
+          path: VERSION
 
     # - name: build
     #   run: go build -o build/onf-${{ matrix.os }}-${{matrix.onf-version}} ./cmd
@@ -48,6 +49,8 @@ jobs:
     #   run: ./build/onf-${{ matrix.os }}-${{matrix.onf-version}} -h
     
     - name: upload
+      env:
+        VERSION: ${{ steps.version.outputs.text }}
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
