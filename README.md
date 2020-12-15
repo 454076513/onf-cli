@@ -7,7 +7,7 @@ this CLI tool can help users to interact with OnFinality platform in developer p
 
 - manage dedicated nodes
 - manage network specs
-- check platform information
+- check  
 
 ## For development
 
