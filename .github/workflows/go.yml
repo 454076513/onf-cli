@@ -14,7 +14,7 @@ jobs:
       matrix:
         go-version: [1.15.x]
         #[macos,ubuntu, windows]
-        os: [ubuntu]
+        os: [windows]
         onf-version: [v0.1.0]
     runs-on:  ${{ matrix.os }}-latest
     steps:
@@ -43,19 +43,14 @@ jobs:
     - name: build window
       run: sh ./scripts/build/windows.sh
 
-    - name: chmod +x
-      run: chmod +x ./build/*
-
     # - name: test
     #   run: ./build/onf-${{ matrix.os }}-${{matrix.onf-version}} -h
     
     - name: upload
-      env:
-        VERSION: ${{ steps.onf-version.outputs.text }}
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "${{ steps.onf-version.outputs.text }}"
+        automatic_release_tag: v"${{ steps.onf-version.outputs.text }}"
         prerelease: false
         files: |
           ./build/*
