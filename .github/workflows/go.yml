@@ -13,7 +13,8 @@ jobs:
     strategy:
       matrix:
         go-version: [1.15.x]
-        os: [macos]
+        #[macos,ubuntu, windows]
+        os: [windows]
         onf-version: [v0.1.0]
     runs-on:  ${{ matrix.os }}-latest
     steps:
@@ -39,7 +40,7 @@ jobs:
     # - name: test
     #   run: ./build/onf-${{ matrix.os }}-${{matrix.onf-version}} -h
     
-    - name: upload:${{ matrix.os }}-${{matrix.onf-version}}
+    - name: upload
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
