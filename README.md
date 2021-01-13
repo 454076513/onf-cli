@@ -11,6 +11,8 @@ this CLI tool can help users to interact with OnFinality platform in developer p
 - check platform information
 - 1
 - 2
+- 3
+- 4
 
 ## For development
 
