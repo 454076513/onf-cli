@@ -5,4 +5,3 @@ networkSpecKey: kusama
 initFromBackup: true
 publicPort: true
 useApiKey: true
-useApiKey: true
