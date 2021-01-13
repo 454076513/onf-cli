@@ -3,7 +3,7 @@ module github.com/OnFinality-io/onf-cli
 go 1.15
 
 require (
-	github.com/dustin/go-humanize v1.0.0 // indirect
+	github.com/dustin/go-humanize v1.0.0
 	github.com/elazarl/goproxy v0.0.0-20201021153353-00ad82a08272 // indirect
 	github.com/ghodss/yaml v1.0.0
 	github.com/kataras/tablewriter v0.0.0-20180708051242-e063d29b7c23 // indirect

@@ -9,10 +9,7 @@ this CLI tool can help users to interact with OnFinality platform in developer p
 - manage network specs
 - check platform information
 - check platform information
-- 1
-- 2
-- 3
-- 4
+- merge
 
 ## For development
 
